@@ -4,8 +4,5 @@ Sword Art Online Discord : C'est le nom du projet qui a pour but de recréer le 
 > Ce bot permettra de faire des combats, des quêtes, monter des paliers ou bien même explorer le monde de SAO. 🎮
 > Nous sommes actuellement une équipe de 6 personnes dont 3 développeurs JS, 1 game designer et 2 graphiste. ✅
 
-**Equipe de SAOD :**
-Développeurs : Xvirus9, Tyzok, Wirare et NoStqfe
-Graphistes : Kuro et Zeka
-Gamedesigner : Alexfire008
+**Equipe de SAOD ->** Développeurs : Xvirus9, Tyzok, Wirare et NoStqfe | Graphistes : Kuro et Zeka | Gamedesigner : Alexfire008
 
