@@ -1,0 +1,22 @@
+{
+    "1":{
+        "prix": 4,
+        "name": "bois",
+        "id": 1
+    },
+    "2":{
+        "prix": 3,
+        "name": "pierre",
+        "id":2
+    },
+    "3":{
+        "prix": 6,
+        "name": "fer",
+        "id":3
+    },
+    "11":{
+        "prix": 8,
+        "name": "dague",
+        "id":11
+    }
+}
