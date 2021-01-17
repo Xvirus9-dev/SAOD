@@ -1,9 +1,3 @@
-{
-    "items":{
-        "1":"dague",
-        "2":"heal_potion",
-        "3":"bois",
-        "4":"fer",
-        "5":"Crystal"
-    }
-    }
+{   
+    "lootbox":["bois","pierre","fer","bronze_sword","heal_potion"]
+}

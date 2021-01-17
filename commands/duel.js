@@ -7,6 +7,16 @@ exports.run = (client, message ) => {
     const ms = require("ms");
     const delay = require('delay');
     const { randomInt } = require('crypto');
+
+    const Number = parseInt(Math.floor((Math.random() * 3)))
+
+    const Item = {
+        0:"col",
+        1:"bois",
+        2:"fer",
+        3:"loot_box",
+      }
+
     let player2 = message.mentions.users.first()
     let player1 = message.author.id
     if(!player2) return message.channel.send("Veuillez préciser un membre pour commencer le duel.")
@@ -37,7 +47,7 @@ exports.run = (client, message ) => {
                         msgreact.on("collect", async(reaction, user) => {     
                             if(reaction.emoji.name === "✅") {
                                 data.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
-                                delay(500)
+                                delay(2000)
                                 data.delete() 
                                 var armes ={
                                     petite_epee: 10,
@@ -59,15 +69,17 @@ exports.run = (client, message ) => {
                                     message.channel.send(combat).then( async(data2) => {
                                             data2.react("⏩").catch(console.log)
                                             await delay(2000);
-                                            while(p1Life>=0 && p2Life>=0) {
-                                                var speed = 2000;
-                                                const msgreact2 = data.createReactionCollector((reaction, user) => user.id === player1 || user.id === player2.id);          
-                                                msgreact2.on("collect", (reaction, user) => {     
+                                            var speed = 2000;
+                                            const msgreact2 = data2.createReactionCollector((reaction, user) => user.id === player1 || user.id === player2.id);          
+                                            msgreact2.on("collect", (reaction, user) => {  
+                                                console.log("2")   
                                                     if(reaction.emoji.name === "⏩") {
                                                         speed = 500;
                                                         console.log("1")
                                                     }
-                                                });
+                                            });
+                                            while(p1Life>=0 && p2Life>=0) {
+                                                
                                                     rdm_damage = randomInt(1,armes[player.get(`player_${message.author.id}`, "arme")])
                                                     p2Life = p2Life-rdm_damage
                                                     var embed1 = await new Discord.MessageEmbed()
@@ -77,11 +89,14 @@ exports.run = (client, message ) => {
                                                     data2.edit(embed1)
                                                     await delay(speed);
                                                     if(p2Life <= 0) {
+                                                        p2Life = 0
                                                         var embed1 = await new Discord.MessageEmbed()
                                                             .setTitle("Duel : " +message.author.username+" contre "+ player2.username)
                                                             .setDescription(message.author.username+", vous avez gagné ! :trophy:")
                                                             .setFooter(message.author.username+": "+p1Life+"pv | "+player2.username+": "+p2Life+"pv")
-                                                        return data2.edit(embed1)
+                                                        data2.edit(embed1)
+                                                        return data2.edit(`Récompense : ${Item[Number]}`,embed2)
+
                                                     }
                                                     rdm_damage = randomInt(1,armes[player.get(`player_${message.author.id}`, "arme")])
                                                     p1Life = p1Life-rdm_damage
@@ -92,11 +107,13 @@ exports.run = (client, message ) => {
                                                     data2.edit(embed2)
                                                     await delay(2000);
                                                     if(p1Life <= 0){
+                                                        p1Life = 0
                                                         var embed1 = await new Discord.MessageEmbed()
                                                             .setTitle("Duel : " +message.author.username+" contre "+ player2.username)
                                                             .setDescription(player2.username+", vous avez gagné ! :trophy:")
                                                             .setFooter(message.author.username+": "+p1Life+"pv | "+player2.username+": "+p2Life+"pv")
-                                                        return data2.edit(embed1)
+                                                        data2.edit(embed1)
+                                                            return data2.edit(`Récompense : ${Item[Number]}`, embed1)
                                                     }
                                             }
                                                     
