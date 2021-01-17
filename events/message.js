@@ -52,14 +52,26 @@ module.exports = (client, message) => {
       fer: 0, 
       pierre: 0,
       pv: 100, 
-      arme: "petite_epee",
+      arme: "petite_epee", 
+      bronze_sword : 0,
       lootbox_normale: 0,
       lootbox_speciale: 0,
       lootbox_legend: 0,
-      potion_heal: 0,
+      heal_potion: 0,
       daily: false,
       pdaily: 1000//"86 400 000"
     })
+
+    const curLvl = Math.floor(0.1 * Math.sqrt(player.get(`player_${message.author.id}`, "xp")));
+
+        if (player.get(`player_${message.author.id}`, "level") < curLvl) {
+          player.set(`player_${message.author.id}`, curLvl, "level");
+            message
+            .reply("Vous venez de passer niveau `"+curLvl+"` !")
+            .then(msg => {
+                msg.delete({ timeout: 15000});
+            });
+        }
     
 
 

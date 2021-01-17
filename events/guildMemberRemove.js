@@ -6,6 +6,7 @@ module.exports = async(client, member) => {
     const Enmap = require("enmap");
     const srv = new Enmap({name: "serveur"});
     
+    if(member.guild.id !== "787059149951205386") return
 
     let memberCountChannel = member.guild.channels.cache.find(channel => channel.id === "787239152508207124")
     memberCountChannel.setName(` 〚💥〛Membres : ${member.guild.memberCount}`).catch(console.error)
